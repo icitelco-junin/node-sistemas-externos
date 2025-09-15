@@ -7,6 +7,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const auth = require('./auth/auth');
 const cobranza = require('./Cobranza/cobranza');
+const payments = require('./Payments/payments');
 
 const app = express();
 
@@ -55,8 +56,9 @@ const { authenticateToken } = auth.helpers;
 app.use(authenticateToken);
 
 // Montar Cobranza (todas las rutas bajo /cobranza quedarán protegidas)
-app.use('/cobranza', cobranza);
+// app.use('/cobranza2', cobranza);
 
+app.use('/payments', payments);
 
 app.get('/ping', (req, res) => {
     res.send('pong');
