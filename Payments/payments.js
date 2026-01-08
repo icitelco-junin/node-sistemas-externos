@@ -8,7 +8,5 @@ router.use("/", cobranza_v1);
 
 router.use("/v1", cobranza_v1);
 
-
-
 module.exports = router;
 

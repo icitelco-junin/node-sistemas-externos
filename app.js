@@ -8,6 +8,7 @@ const helmet = require('helmet');
 const auth = require('./auth/auth');
 const cobranza = require('./Cobranza/cobranza');
 const payments = require('./Payments/payments');
+const iaRouter = require('./IA/ia');
 
 const app = express();
 
@@ -49,6 +50,8 @@ app.use(morgan('short'));
 app.get('/ping2', (req, res) => {
     res.send('pong');
 });
+
+app.use('/ia', iaRouter); // Agrega esta línea
 
 // AUTH
 app.use(auth.routes);

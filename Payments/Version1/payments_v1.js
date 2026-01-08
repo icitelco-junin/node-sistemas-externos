@@ -17,7 +17,7 @@ router.get('/consulta_deuda', async (req, res) => {
     }
 
     const payload = {
-        EmpresaId: 1,
+        EmpresaId: parseInt(process.env.EMPRESA) || 2,
         ClienteCodExt: cisTrim,
     };
 
