@@ -1,13 +1,16 @@
 // Cobranza/cobranza.js
 const express = require('express');
 const axios = require('axios');
+const { authenticateToken, validarSoloUsuario } = require('../../auth/auth').helpers;
 require('dotenv').config();
 
 const router = express.Router();
 
-router.get('/consulta_deuda', async (req, res) => {
+router.get('/consulta_deuda',authenticateToken, validarSoloUsuario,async (req, res) => {
     const { cis } = req.query;
     const cisTrim = typeof cis === 'string' ? cis.trim() : '';
+
+    console.log('user: ' + req.user.username)
 
     // 400 Bad Request
     if (!cisTrim) {
